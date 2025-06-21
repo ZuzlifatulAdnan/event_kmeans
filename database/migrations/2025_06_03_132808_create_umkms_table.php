@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_pemilik');
             $table->date('tahun_bergabung');
             $table->string('jenis_umkm');
+            $table->string('nama_event');
             $table->timestamps();
         });
     }
