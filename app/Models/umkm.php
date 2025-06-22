@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class umkm extends Model
 {
-      use HasFactory;
+    use HasFactory;
     protected $fillable = [
         'nama_umkm',
         'nama_pemilik',
         'tahun_bergabung',
         'jenis_umkm',
         'nama_event',
+        'username_instagram',
     ];
 }

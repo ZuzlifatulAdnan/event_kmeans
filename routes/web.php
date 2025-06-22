@@ -15,6 +15,8 @@ Route::middleware(['auth'])->group(function () {
     // kmeans
     Route::resource('kmeans', KmeansController::class);
     // Umkm
+    Route::get('/umkm/export', [UmkmController::class, 'export'])->name('umkm.export');
+    Route::post('/umkm/import', [UmkmController::class, 'import'])->name('umkm.import');
     Route::resource('umkm', UmkmController::class);
     // User
     Route::resource('user', UserController::class);

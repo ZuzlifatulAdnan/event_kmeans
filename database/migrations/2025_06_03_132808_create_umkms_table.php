@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nama_umkm');
             $table->string('nama_pemilik');
-            $table->date('tahun_bergabung');
+            $table->string('tahun_bergabung');
             $table->string('jenis_umkm');
             $table->string('nama_event');
+            $table->string('username_instagram')->nullable();
             $table->timestamps();
         });
     }
