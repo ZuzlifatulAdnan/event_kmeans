@@ -13,6 +13,10 @@ Route::middleware(['auth'])->group(function () {
     // beranda
     Route::resource('beranda', BerandaController::class);
     // kmeans
+    Route::get('/kmeans/export-keikutsertaan', [KmeansController::class, 'exportKeikutsertaan'])->name('kmeans.export.keikutsertaan');
+Route::get('/kmeans/export-clustering', [KmeansController::class, 'exportClustering'])->name('kmeans.export.clustering');
+    Route::post('/kmeans/reset-centroid', [KmeansController::class, 'resetCentroid'])->name('kmeans.resetCentroid');
+    Route::post('/kmeans/update-centroid', [KMeansController::class, 'updateCentroid'])->name('kmeans.updateCentroid');
     Route::resource('kmeans', KmeansController::class);
     // Umkm
     Route::get('/umkm/export', [UmkmController::class, 'export'])->name('umkm.export');
