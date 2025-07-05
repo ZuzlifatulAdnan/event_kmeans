@@ -21,14 +21,14 @@ class BerandaController extends Controller
             ->groupBy('nama_umkm')
             ->get();
 
-        $bronze = $umkmCounts->where('jumlah', 2)->count();
-        $silver = $umkmCounts->where('jumlah', 3)->count();
-        $gold = $umkmCounts->where('jumlah', '>=', 5)->count();
+        $bronze = $umkmCounts->where('jumlah', 1)->count();
+        $silver = $umkmCounts->where('jumlah', 4)->count();
+        $gold = $umkmCounts->where('jumlah', '>=', 10)->count();
 
         // Ambil nama_umkm per kategori
-        $bronzeList = $umkmCounts->where('jumlah', 2)->pluck('nama_umkm');
-        $silverList = $umkmCounts->where('jumlah', 3)->pluck('nama_umkm');
-        $goldList = $umkmCounts->where('jumlah', '>=', 5)->pluck('nama_umkm');
+        $bronzeList = $umkmCounts->where('jumlah', 1)->pluck('nama_umkm');
+        $silverList = $umkmCounts->where('jumlah', 4)->pluck('nama_umkm');
+        $goldList = $umkmCounts->where('jumlah', '>=', 10)->pluck('nama_umkm');
 
         return view('pages.beranda.index', compact(
             'type_menu',

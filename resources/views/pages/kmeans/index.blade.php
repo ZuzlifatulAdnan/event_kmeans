@@ -34,11 +34,11 @@
                                 <td>{{ $umkm->jumlah_ikut }}</td>
                                 <td>{{ $umkm->tahun_bergabung }}</td>
                                 <td>
-                                    @if ($umkm->jumlah_ikut >= 5)
+                                    @if ($umkm->jumlah_ikut >= 10)
                                         <span class="badge badge-warning">Gold</span>
-                                    @elseif ($umkm->jumlah_ikut >= 3)
+                                    @elseif ($umkm->jumlah_ikut >= 4)
                                         <span class="badge badge-secondary">Silver</span>
-                                    @elseif ($umkm->jumlah_ikut >= 2)
+                                    @elseif ($umkm->jumlah_ikut >= 1)
                                         <span class="badge" style="background-color: #cd7f32; color: white;">Bronze</span>
                                     @else
                                         <span class="badge badge-light">-</span>

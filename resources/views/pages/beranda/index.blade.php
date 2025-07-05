@@ -103,7 +103,7 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-header bg-warning">
-                                <h4 class="text-dark m-0">Bronze (2x Keikutsertaan)</h4>
+                                <h4 class="text-dark m-0">Bronze (1x Keikutsertaan)</h4>
                             </div>
                             <div class="card-body">
                                 @forelse($bronzeList as $umkm)
@@ -119,7 +119,7 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-header bg-secondary">
-                                <h4 class="text-dark m-0">Silver (3x Keikutsertaan)</h4>
+                                <h4 class="text-dark m-0">Silver (4x Keikutsertaan)</h4>
                             </div>
                             <div class="card-body">
                                 @forelse($silverList as $umkm)
@@ -135,7 +135,7 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-header bg-success">
-                                <h4 class="text-dark m-0">Gold (5x+ Keikutsertaan)</h4>
+                                <h4 class="text-dark m-0">Gold (10x+ Keikutsertaan)</h4>
                             </div>
                             <div class="card-body">
                                 @forelse($goldList as $umkm)
