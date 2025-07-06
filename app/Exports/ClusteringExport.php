@@ -9,15 +9,17 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class ClusteringExport implements FromView
 {
-    protected $data;
+    protected $clusters;
 
     public function __construct($clusters)
     {
-        $this->data = $clusters;
+        $this->clusters = $clusters;
     }
 
     public function view(): View
     {
-        return view('pages.exports.clustering', ['clusters' => $this->data]);
+        $clusters = $this->clusters;
+
+        return view('pages.exports.clustering', compact('clusters'));
     }
 }

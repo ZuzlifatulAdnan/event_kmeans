@@ -14,21 +14,34 @@ class BerandaController extends Controller
         $type_menu = 'beranda';
 
         $totalUser = User::count();
-
         $totalUmkm = Umkm::select('nama_umkm')->distinct()->count();
 
-        $umkmCounts = Umkm::select('nama_umkm', DB::raw('COUNT(*) as jumlah'))
+        // Hitung & Ambil nama_umkm dengan jumlah partisipasi & id terbaru
+        $umkmCounts = Umkm::select('nama_umkm', DB::raw('COUNT(*) as jumlah'), DB::raw('MAX(id) as latest_id'))
             ->groupBy('nama_umkm')
+            ->orderByDesc('latest_id')
             ->get();
 
-        $bronze = $umkmCounts->where('jumlah', 1)->count();
-        $silver = $umkmCounts->where('jumlah', 4)->count();
-        $gold = $umkmCounts->where('jumlah', '>=', 10)->count();
+        // Hitung jumlah kategori
+        $bronze = $umkmCounts->whereBetween('jumlah', [1,3])->count();
+        $silver = $umkmCounts->whereBetween('jumlah', [4,9])->count();
+        $gold   = $umkmCounts->where('jumlah', '>=', 10)->count();
 
-        // Ambil nama_umkm per kategori
-        $bronzeList = $umkmCounts->where('jumlah', 1)->pluck('nama_umkm');
-        $silverList = $umkmCounts->where('jumlah', 4)->pluck('nama_umkm');
-        $goldList = $umkmCounts->where('jumlah', '>=', 10)->pluck('nama_umkm');
+        // Ambil list maksimal 10 terbaru per kategori
+        $bronzeList = $umkmCounts
+            ->whereBetween('jumlah', [1,3])
+            ->sortByDesc('latest_id')
+            ->take(10);
+
+        $silverList = $umkmCounts
+            ->whereBetween('jumlah', [4,9])
+            ->sortByDesc('latest_id')
+            ->take(10);
+
+        $goldList = $umkmCounts
+            ->where('jumlah', '>=', 10)
+            ->sortByDesc('latest_id')
+            ->take(10);
 
         return view('pages.beranda.index', compact(
             'type_menu',

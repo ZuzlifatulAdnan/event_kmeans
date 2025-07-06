@@ -4,14 +4,16 @@
             <th>Nama UMKM</th>
             <th>Jumlah Ikut</th>
             <th>Tahun Bergabung</th>
+            <th>Kategori</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($umkms as $u)
+        @foreach($umkm_data as $umkm)
         <tr>
-            <td>{{ $u->nama_umkm }}</td>
-            <td>{{ $u->jumlah_ikut }}</td>
-            <td>{{ $u->tahun_bergabung }}</td>
+            <td>{{ $umkm->nama_umkm }}</td>
+            <td>{{ $umkm->jumlah_ikut }}</td>
+            <td>{{ $umkm->tahun_bergabung }}</td>
+            <td>{{ $umkm->peringkat }}</td>
         </tr>
         @endforeach
     </tbody>

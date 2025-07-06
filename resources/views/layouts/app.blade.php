@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components.css') }}">
 
-     <!-- Favicon -->
+    <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('favicon/favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
@@ -47,10 +47,8 @@
         <div class="main-wrapper">
             <!-- Header -->
             @include('components.header')
-
             <!-- Sidebar -->
             @include('components.sidebar')
-
             <!-- Content -->
             @yield('main')
 
@@ -86,14 +84,14 @@
     <script src="{{ asset('js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const deleteButtons = document.querySelectorAll('.confirm-delete');
-    
+
             deleteButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
+                button.addEventListener('click', function(e) {
                     e.preventDefault();
                     const form = this.closest('form');
-    
+
                     Swal.fire({
                         title: 'Apakah Anda yakin?',
                         text: "Data yang dihapus tidak dapat dikembalikan!",

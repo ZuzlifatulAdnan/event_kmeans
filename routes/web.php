@@ -1,13 +1,16 @@
 <?php
 
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\KmeansController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/beranda');
+Route::redirect('/', '/dashboard');
+
+Route::resource('dashboard', dashboardController::class);
 
 Route::middleware(['auth'])->group(function () {
     // beranda

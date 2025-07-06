@@ -10,8 +10,8 @@
             </div>
 
             <div class="section-body">
+                {{-- Statistik --}}
                 <div class="row">
-                    <!-- Total User -->
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-primary">
@@ -28,7 +28,6 @@
                         </div>
                     </div>
 
-                    <!-- Total UMKM -->
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-info">
@@ -45,7 +44,6 @@
                         </div>
                     </div>
 
-                    <!-- Bronze -->
                     <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-warning">
@@ -62,7 +60,6 @@
                         </div>
                     </div>
 
-                    <!-- Silver -->
                     <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-secondary">
@@ -79,7 +76,6 @@
                         </div>
                     </div>
 
-                    <!-- Gold -->
                     <div class="col-lg-2 col-md-6 col-sm-6">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-success">
@@ -97,56 +93,45 @@
                     </div>
                 </div>
 
-                {{-- Daftar UMKM Per Kategori --}}
+                {{-- Daftar Bronze–Silver–Gold --}}
                 <div class="row mt-5">
-                    <!-- Bronze List -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header bg-warning">
-                                <h4 class="text-dark m-0">Bronze (1x Keikutsertaan)</h4>
-                            </div>
-                            <div class="card-body">
-                                @forelse($bronzeList as $umkm)
-                                    <p>- {{ $umkm }}</p>
-                                @empty
-                                    <p>Tidak ada UMKM</p>
-                                @endforelse
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Silver List -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header bg-secondary">
-                                <h4 class="text-dark m-0">Silver (4x Keikutsertaan)</h4>
-                            </div>
-                            <div class="card-body">
-                                @forelse($silverList as $umkm)
-                                    <p>- {{ $umkm }}</p>
-                                @empty
-                                    <p>Tidak ada UMKM</p>
-                                @endforelse
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Gold List -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-header bg-success">
-                                <h4 class="text-dark m-0">Gold (10x+ Keikutsertaan)</h4>
-                            </div>
-                            <div class="card-body">
-                                @forelse($goldList as $umkm)
-                                    <p>- {{ $umkm }}</p>
-                                @empty
-                                    <p>Tidak ada UMKM</p>
-                                @endforelse
+                    @foreach ([
+            'bronze' => ['list' => $bronzeList, 'color' => 'bg-warning'],
+            'silver' => ['list' => $silverList, 'color' => 'bg-secondary'],
+            'gold' => ['list' => $goldList, 'color' => 'bg-success'],
+        ] as $kategori => $data)
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header {{ $data['color'] }}">
+                                    <h4 class="text-dark fw-bold m-0">
+                                        {{ ucfirst($kategori) }} ({{ $data['list']->count() }} UMKM)
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-striped table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama UMKM</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse($data['list'] as $umkm)
+                                                <tr>
+                                                    <td>{{ $umkm->nama_umkm }}</td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td>Tidak ada UMKM</td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
+
             </div>
         </section>
     </div>
